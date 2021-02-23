@@ -39,18 +39,7 @@ label: {
     }
     func getJokes() {
 
-          jokes.append(Joke(setup: "Why do programmers always get Christmas and Halloween mixed up?",
-
-                            punchline: "Because DEC 25 = OCT 31"))
-
-          jokes.append(Joke(setup: "How did the programmer die in the shower?",
-
-                            punchline: "She followed the shampoo bottle instructions: Lather. Rinse. Repeat."))
-
-          jokes.append(Joke(setup: "There are 10 types of people in the world",
-
-                            punchline: "Those who understand binary and those who don’t."))
-
+    let apikey = "?rapidapi-key=9ffc0481e6msh0b0a5178fa7b7a1p135476jsn3edbce5e740f"
       }
 
 
@@ -66,3 +55,75 @@ struct ContentView_Previews: PreviewProvider {
         var setup: String
         var punchline: String
     }
+let query = "https://dad-jokes.p.rapidapi.com/joke/type/programming\(apiKey)"
+        if let url = URL(string: query)
+        {
+
+            if let data = try? Data(contentsOf: url)
+        {
+
+                let json = try! JSON(data: data)
+
+                if json["success"] == true
+                {
+
+                    let contents = json["body"].arrayValue
+
+                }
+
+            }
+
+        }
+for item in contents
+                    {
+
+                        let setup = item["setup"].stringValue
+
+                        let punchline = item["punchline"].stringValue
+
+                        let joke = Joke(setup: setup, punchline: punchline)
+
+                        jokes.append(joke)
+
+                    }
+func getJokes()
+            {
+
+       let apiKey = "?rapidapi-key=(paste your Rapid API key here)"
+
+       let query = "https://dad-jokes.p.rapidapi.com/joke/type/programming\(apiKey)"
+
+       if let url = URL(string: query)
+       {
+
+           if let data = try? Data(contentsOf: url)
+           {
+
+               let json = try! JSON(data: data)
+
+               if json["success"] == true
+               {
+
+                   let contents = json["body"].arrayValue
+
+                   for item in contents
+                   {
+
+                       let setup = item["setup"].stringValue
+
+                       let punchline = item["punchline"].stringValue
+
+                       let joke = Joke(setup: setup, punchline: punchline)
+
+                       jokes.append(joke)
+
+                   }
+
+               }
+
+           }
+
+       }
+
+   }
+
